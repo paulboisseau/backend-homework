@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(fetchUrl)
       .then((response) => {
         if (! response.ok) {
-          throw new Error(`Réponse réseau non ok: ${response.status}`);
           ko();
+          throw new Error(`Réponse réseau non ok: ${response.status}`);
         }
         return response.json();
       })
