@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 notes = [
     {"id": 1, "title": "Manger", "content": "Du curry et du riz", "done": False},
-    {"id": 2, "title": "Envoyer l'email", "content": "Fondation", "done": True},
+    {"id": 2, "title": "Envoyer l'email", "content": "Fondation Mines Paris", "done": True},
     {"id": 3, "title": "Sport", "content": "Courir très vite", "done": False},
 ]
 

@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOMContentLoaded");
   
-    // Écoute des événements SSE (Server-Sent Events)
     const source = new EventSource("/events");
   
     source.onmessage = (event) => {
       const data = JSON.parse(event.data);
   
-      // Si c'est une mise à jour de l'état d'une note
+      // Si mise à jour :
       if (data.type === "update") {
         const checkbox = document.querySelector(`input[data-id="${data.id}"]`);
         if (checkbox) {
@@ -15,11 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
   
-      // Si c'est une nouvelle note
+      // Si nouvelle :
       if (data.type === "new") {
-        // Optionnel : recharger la page pour afficher la nouvelle note
-        // window.location.reload();
-        // Sinon, ajouter dynamiquement la nouvelle note
+
         const notesContainer = document.querySelector("#notes");
         const newNoteHTML = `
           <div class="note">
@@ -38,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   
-    // Gestion de l'état des cases à cocher comme d'habitude
     document.querySelectorAll(".note > form > input").forEach((element) => {
       element.addEventListener("change", (event) => {
         const done = element.checked;
